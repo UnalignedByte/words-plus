@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B54DB71B22ABE8C500D0FA1A /* WordsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DB71A22ABE8C500D0FA1A /* WordsStore.swift */; };
 		B5A68C5222AAF6D30049B059 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A68C5122AAF6D30049B059 /* WordRow.swift */; };
 		B5A68C5422AAFC760049B059 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A68C5322AAFC760049B059 /* Word.swift */; };
 		B5E8837622AAF16D00237C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8837522AAF16D00237C6C /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B54DB71A22ABE8C500D0FA1A /* WordsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsStore.swift; sourceTree = "<group>"; };
 		B5A68C5122AAF6D30049B059 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		B5A68C5322AAFC760049B059 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		B5E8837222AAF16D00237C6C /* Words Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Words Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A68C5322AAFC760049B059 /* Word.swift */,
+				B54DB71A22ABE8C500D0FA1A /* WordsStore.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				B5EE6D5B22AB03E70066AE93 /* WordsList.swift in Sources */,
 				B5E8837622AAF16D00237C6C /* AppDelegate.swift in Sources */,
 				B5A68C5422AAFC760049B059 /* Word.swift in Sources */,
+				B54DB71B22ABE8C500D0FA1A /* WordsStore.swift in Sources */,
 				B5E8837822AAF16D00237C6C /* SceneDelegate.swift in Sources */,
 				B5E8837A22AAF16D00237C6C /* ContentView.swift in Sources */,
 			);

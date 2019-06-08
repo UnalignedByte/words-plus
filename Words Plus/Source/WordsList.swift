@@ -9,19 +9,30 @@
 import SwiftUI
 
 struct WordsList: View {
+    @ObjectBinding var wordsStore: WordsStore
     @State var displayOption: DisplayOption = .everything
 
     var body: some View {
-        List {
-            SegmentedControl(selection: $displayOption) {
-                ForEach(DisplayOption.allCases.identified(by: \.self)) { option in
-                    Text(option.name).tag(option)
+        NavigationView {
+            List {
+                SegmentedControl(selection: $displayOption) {
+                    ForEach(DisplayOption.allCases.identified(by: \.self)) { option in
+                        Text(option.name).tag(option)
+                    }
                 }
-            }
-            WordRow(word: Word(id: "a", word: "word1", translation: "translation1", pinyin: "pinyin1"), displayOption: displayOption)
-            WordRow(word: Word(id: "b", word: "word2", translation: "translation2", pinyin: "pinyin2"), displayOption: displayOption)
-            WordRow(word: Word(id: "c", word: "word3", translation: "translation3", pinyin: "pinyin3"), displayOption: displayOption)
-            WordRow(word: Word(id: "d", word: "word4", translation: "translation4", pinyin: "pinyin4"), displayOption: displayOption)
+                ForEach(wordsStore.words) { word in
+                    WordRow(word: word, displayOption: self.displayOption)
+                }.onDelete { indexSet in
+                    if let index = indexSet.first {
+                        self.wordsStore.words.remove(at: index)
+                    }
+                }.onMove { (indexSet, targetIndex) in
+                    if let index = indexSet.first {
+                        let element = self.wordsStore.words.remove(at: index)
+                        self.wordsStore.words.insert(element, at: targetIndex)
+                    }
+                }
+            }.navigationBarItems(trailing: EditButton())
         }
     }
 }
