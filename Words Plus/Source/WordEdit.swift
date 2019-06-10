@@ -15,10 +15,13 @@ struct WordEdit: View {
         VStack {
             Text("Word")
             TextField($word.word)
+                .textFieldStyle(.roundedBorder)
             Text("Pinyin")
             TextField($word.pinyin)
+                .textFieldStyle(.roundedBorder)
             Text("Translation")
             TextField($word.translation)
+                .textFieldStyle(.roundedBorder)
             Spacer()
         }.padding()
     }

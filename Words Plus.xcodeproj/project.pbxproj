@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B50AFE4F22AC159400662185 /* WordEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AFE4E22AC159400662185 /* WordEdit.swift */; };
+		B50AFE5122AC20E500662185 /* GroupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AFE5022AC20E500662185 /* GroupsList.swift */; };
+		B50AFE5322AC22FC00662185 /* GroupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AFE5222AC22FC00662185 /* GroupRow.swift */; };
+		B50AFE5522AC232E00662185 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50AFE5422AC232E00662185 /* Group.swift */; };
 		B54DB71B22ABE8C500D0FA1A /* WordsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54DB71A22ABE8C500D0FA1A /* WordsStore.swift */; };
 		B5A68C5222AAF6D30049B059 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A68C5122AAF6D30049B059 /* WordRow.swift */; };
 		B5A68C5422AAFC760049B059 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A68C5322AAFC760049B059 /* Word.swift */; };
 		B5E8837622AAF16D00237C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8837522AAF16D00237C6C /* AppDelegate.swift */; };
 		B5E8837822AAF16D00237C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8837722AAF16D00237C6C /* SceneDelegate.swift */; };
-		B5E8837A22AAF16D00237C6C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8837922AAF16D00237C6C /* ContentView.swift */; };
 		B5E8837C22AAF16E00237C6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5E8837B22AAF16E00237C6C /* Assets.xcassets */; };
 		B5E8838E22AAF35000237C6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5E8838D22AAF35000237C6C /* LaunchScreen.storyboard */; };
 		B5EE6D5B22AB03E70066AE93 /* WordsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE6D5A22AB03E70066AE93 /* WordsList.swift */; };
@@ -21,13 +23,15 @@
 
 /* Begin PBXFileReference section */
 		B50AFE4E22AC159400662185 /* WordEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEdit.swift; sourceTree = "<group>"; };
+		B50AFE5022AC20E500662185 /* GroupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsList.swift; sourceTree = "<group>"; };
+		B50AFE5222AC22FC00662185 /* GroupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRow.swift; sourceTree = "<group>"; };
+		B50AFE5422AC232E00662185 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		B54DB71A22ABE8C500D0FA1A /* WordsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsStore.swift; sourceTree = "<group>"; };
 		B5A68C5122AAF6D30049B059 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		B5A68C5322AAFC760049B059 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		B5E8837222AAF16D00237C6C /* Words Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Words Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E8837522AAF16D00237C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5E8837722AAF16D00237C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5E8837922AAF16D00237C6C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B5E8837B22AAF16E00237C6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5E8838322AAF16E00237C6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5E8838D22AAF35000237C6C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A68C5322AAFC760049B059 /* Word.swift */,
+				B50AFE5422AC232E00662185 /* Group.swift */,
 				B54DB71A22ABE8C500D0FA1A /* WordsStore.swift */,
 			);
 			path = Entities;
@@ -86,7 +91,8 @@
 				B5A68C5522AAFD210049B059 /* Entities */,
 				B5E8837522AAF16D00237C6C /* AppDelegate.swift */,
 				B5E8837722AAF16D00237C6C /* SceneDelegate.swift */,
-				B5E8837922AAF16D00237C6C /* ContentView.swift */,
+				B50AFE5022AC20E500662185 /* GroupsList.swift */,
+				B50AFE5222AC22FC00662185 /* GroupRow.swift */,
 				B5EE6D5A22AB03E70066AE93 /* WordsList.swift */,
 				B5A68C5122AAF6D30049B059 /* WordRow.swift */,
 				B50AFE4E22AC159400662185 /* WordEdit.swift */,
@@ -182,13 +188,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A68C5222AAF6D30049B059 /* WordRow.swift in Sources */,
+				B50AFE5122AC20E500662185 /* GroupsList.swift in Sources */,
 				B5EE6D5B22AB03E70066AE93 /* WordsList.swift in Sources */,
+				B50AFE5522AC232E00662185 /* Group.swift in Sources */,
 				B5E8837622AAF16D00237C6C /* AppDelegate.swift in Sources */,
 				B50AFE4F22AC159400662185 /* WordEdit.swift in Sources */,
 				B5A68C5422AAFC760049B059 /* Word.swift in Sources */,
 				B54DB71B22ABE8C500D0FA1A /* WordsStore.swift in Sources */,
 				B5E8837822AAF16D00237C6C /* SceneDelegate.swift in Sources */,
-				B5E8837A22AAF16D00237C6C /* ContentView.swift in Sources */,
+				B50AFE5322AC22FC00662185 /* GroupRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
