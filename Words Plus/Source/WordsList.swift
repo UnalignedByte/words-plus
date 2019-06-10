@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct WordsList: View {
-    var group: Group
+    @EnvironmentObject var wordsStore: WordsStore
+    let group: Group
+
     @State var displayOption: DisplayOption = .everything
     @State var showPopup: Bool = false
-    @State var popupWord: Word = Word(id: "", word: "", translation: "", pinyin: "")
+    @State var groupIndex = 0
+    @State var wordIndex = 0
 
     var body: some View {
         return NavigationView {
@@ -25,8 +28,9 @@ struct WordsList: View {
                 ForEach(group.words) { word in
                     WordRow(word: word, displayOption: self.displayOption)
                         .longPressAction({
+                            self.groupIndex = self.wordsStore.groups.firstIndex { $0 == self.group }!
+                            self.wordIndex = self.wordsStore.groups[self.groupIndex].words.firstIndex { $0 == word }!
                             self.showPopup = true
-                            self.popupWord = word
                         })
                 }/*.onDelete { indexSet in
                     if let index = indexSet.first {
@@ -39,7 +43,7 @@ struct WordsList: View {
                     }
                 }*/
             }.navigationBarTitle(Text(group.name))
-            //.presentation(self.showPopup ? Modal(WordEdit(word: $popupWord)) { self.showPopup = false } : nil)
+            .presentation(self.showPopup ? Modal(WordEdit(word: $wordsStore.groups[groupIndex].words[wordIndex])) { self.showPopup = false } : nil)
         }
     }
 }

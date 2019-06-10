@@ -17,7 +17,7 @@ struct WordEdit: View {
             TextField($word.word)
                 .textFieldStyle(.roundedBorder)
             Text("Pinyin")
-            TextField($word.pinyin)
+                TextField($word.pinyin)
                 .textFieldStyle(.roundedBorder)
             Text("Translation")
             TextField($word.translation)

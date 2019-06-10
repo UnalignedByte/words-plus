@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct GroupsList: View {
-    @ObjectBinding var wordsStore: WordsStore
+    @EnvironmentObject var wordsStore: WordsStore
 
     var body: some View {
         NavigationView {
