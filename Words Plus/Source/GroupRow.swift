@@ -12,6 +12,13 @@ struct GroupRow: View {
     let group: Group
 
     var body: some View {
-        Text(group.name)
+        HStack {
+            Text(group.name)
+            Spacer()
+            VStack {
+                Spacer()
+                Text("\(group.words.count) words")
+            }
+        }.frame(height: 60)
     }
 }
