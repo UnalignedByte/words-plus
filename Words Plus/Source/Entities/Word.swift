@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Word: Identifiable {
+struct Word: Identifiable, Hashable {
     let id: String
     var word: String
     var translation: String

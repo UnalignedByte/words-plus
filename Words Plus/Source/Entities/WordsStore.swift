@@ -28,5 +28,7 @@ final class WordsStore: BindableObject {
                                     Word(id: "1", word: "word 1", translation: "translation 1", pinyin: "pinyin 1"),
                                     Word(id: "2", word: "word 2", translation: "translation 2", pinyin: "pinyin 2")]
 
-    private static let testGroups = [Group(name: "Group 0"), Group(name: "Group 1"), Group(name: "Group 2")]
+    private static let testGroups = [Group(name: "Group 0", words: testWords),
+                                     Group(name: "Group 1", words: testWords),
+                                     Group(name: "Group 2", words: testWords)]
 }

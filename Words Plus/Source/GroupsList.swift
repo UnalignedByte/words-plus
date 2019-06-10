@@ -15,7 +15,9 @@ struct GroupsList: View {
         NavigationView {
             List {
                 ForEach(wordsStore.groups.identified(by: \.self)) { group  in
-                    GroupRow(group: group)
+                    NavigationButton(destination: WordsList(group: group)) {
+                        GroupRow(group: group)
+                    }
                 }
             }.navigationBarTitle(Text("Word Groups"))
         }

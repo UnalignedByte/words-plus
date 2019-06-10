@@ -9,5 +9,6 @@
 import Foundation
 
 struct Group: Hashable {
-    let name: String
+    var name: String
+    var words: [Word]
 }
