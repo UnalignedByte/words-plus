@@ -13,11 +13,9 @@ struct GroupsList: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(wordsStore.groups.identified(by: \.self)) { group  in
-                    NavigationButton(destination: WordsList(group: group)) {
-                        GroupRow(group: group)
-                    }
+            List(wordsStore.groups, id: \.self) { group in
+                NavigationLink(destination: WordsList(group: group)) {
+                    GroupRow(group: group)
                 }
             }.navigationBarTitle(Text("Word Groups"))
         }

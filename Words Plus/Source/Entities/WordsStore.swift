@@ -10,17 +10,17 @@ import SwiftUI
 import Combine
 
 final class WordsStore: BindableObject {
-    let didChange = PassthroughSubject<Void, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
 
     var groups = WordsStore.testGroups {
-        didSet {
-            didChange.send(())
+        willSet {
+            willChange.send(())
         }
     }
 
     var words = WordsStore.testWords {
-        didSet {
-            didChange.send(())
+        willSet {
+            willChange.send(())
         }
     }
 
