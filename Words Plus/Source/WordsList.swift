@@ -9,30 +9,27 @@
 import SwiftUI
 
 struct WordsList: View {
-    @EnvironmentObject var wordsStore: WordsStore
-    let group: Group
-
-    @State var displayOption: DisplayOption = .everything
-    @State var showPopup: Bool = false
-    @State var groupIndex = 0
-    @State var wordIndex = 0
+    @Binding var group: Group
+    @State private var displayOption: DisplayOption = .everything
+    @State private var selectedWordIndex: Int = 0
+    @State private var shouldShowEdit: Bool = false
 
     var body: some View {
         return NavigationView {
             List {
                 SegmentedControl(selection: $displayOption) {
-                    ForEach(DisplayOption.allCases.identified(by: \.self)) { option in
+                    ForEach(DisplayOption.allCases, id: \.self) { option in
                         Text(option.name).tag(option)
                     }
                 }
-                ForEach(group.words) { word in
-                    WordRow(word: word, displayOption: self.displayOption)
-                        .longPressAction({
-                            self.groupIndex = self.wordsStore.groups.firstIndex { $0 == self.group }!
-                            self.wordIndex = self.wordsStore.groups[self.groupIndex].words.firstIndex { $0 == word }!
-                            self.showPopup = true
-                        })
-                }/*.onDelete { indexSet in
+                ForEach(0..<group.words.count) { i in
+                    WordRow(word: self.group.words[i], displayOption: self.displayOption)
+                    .longPressAction({
+                        self.selectedWordIndex = i
+                        self.shouldShowEdit = true
+                    })
+                }
+                /*.onDelete { indexSet in
                     if let index = indexSet.first {
                         group.words.remove(at: index)
                     }
@@ -43,7 +40,9 @@ struct WordsList: View {
                     }
                 }*/
             }.navigationBarTitle(Text(group.name))
-            .presentation(self.showPopup ? Modal(WordEdit(word: $wordsStore.groups[groupIndex].words[wordIndex])) { self.showPopup = false } : nil)
+            .sheet(isPresented: $shouldShowEdit) {
+                WordEdit(word: self.$group.words[self.selectedWordIndex])
+            }
         }
     }
 }

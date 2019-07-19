@@ -13,9 +13,9 @@ struct GroupsList: View {
 
     var body: some View {
         NavigationView {
-            List(wordsStore.groups, id: \.self) { group in
-                NavigationLink(destination: WordsList(group: group)) {
-                    GroupRow(group: group)
+            List(0..<wordsStore.groups.count) { i in
+                NavigationLink(destination: WordsList(group: self.$wordsStore.groups[i])) {
+                    GroupRow(group: self.wordsStore.groups[i])
                 }
             }.navigationBarTitle(Text("Word Groups"))
         }

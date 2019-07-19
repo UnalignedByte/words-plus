@@ -12,17 +12,16 @@ struct WordEdit: View {
     @Binding var word: Word
 
     var body: some View {
-        VStack {
-            Text("Word")
-            TextField($word.word)
-                .textFieldStyle(.roundedBorder)
-            Text("Pinyin")
-                TextField($word.pinyin)
-                .textFieldStyle(.roundedBorder)
-            Text("Translation")
-            TextField($word.translation)
-                .textFieldStyle(.roundedBorder)
-            Spacer()
-        }.padding()
+        Form {
+            Section(header: Text("Word")) {
+                TextField("Word", text: $word.word)
+            }
+            Section(header: Text("Pinyin")) {
+                TextField("Pinyin", text: $word.pinyin)
+            }
+            Section(header: Text("Translation")) {
+                TextField("Translation", text: $word.translation)
+            }
+        }
     }
 }
