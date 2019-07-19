@@ -41,7 +41,7 @@ struct WordsList: View {
                 }*/
             }.navigationBarTitle(Text(group.name))
             .sheet(isPresented: $shouldShowEdit) {
-                WordEdit(word: self.$group.words[self.selectedWordIndex])
+                WordEdit(word: self.$group.words[self.selectedWordIndex], isPresented: self.$shouldShowEdit)
             }
         }
     }

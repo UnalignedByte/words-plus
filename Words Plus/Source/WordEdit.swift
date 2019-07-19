@@ -10,6 +10,8 @@ import SwiftUI
 
 struct WordEdit: View {
     @Binding var word: Word
+    @Binding var isPresented: Bool
+    //@Environment(\.isPresented) private var isPresented: Binding<Bool>?
 
     var body: some View {
         Form {
@@ -21,6 +23,9 @@ struct WordEdit: View {
             }
             Section(header: Text("Translation")) {
                 TextField("Translation", text: $word.translation)
+            }
+            Button("Cancel") {
+                self.isPresented = false
             }
         }
     }
