@@ -11,7 +11,13 @@ import SwiftUI
 struct WordEdit: View {
     @Binding var word: Word
     @Binding var isPresented: Bool
-    //@Environment(\.isPresented) private var isPresented: Binding<Bool>?
+    private var wordCopy: Word
+
+    init(word: Binding<Word>, isPresented: Binding<Bool>) {
+        self._word = word
+        self._isPresented = isPresented
+        self.wordCopy = word.value
+    }
 
     var body: some View {
         Form {
@@ -24,7 +30,11 @@ struct WordEdit: View {
             Section(header: Text("Translation")) {
                 TextField("Translation", text: $word.translation)
             }
+            Button("Save") {
+                self.isPresented = false
+            }
             Button("Cancel") {
+                self.word = self.wordCopy
                 self.isPresented = false
             }
         }
