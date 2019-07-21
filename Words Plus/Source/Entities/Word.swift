@@ -6,11 +6,13 @@
 //  Copyright © 2019 UnalignedByte. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
 
-struct Word: Identifiable, Hashable {
-    let id: String
-    var word: String
-    var translation: String
-    var pinyin: String
+struct Word {
+    let language: Language
+    var values: [String] { didSet {
+        guard values.count == language.valuesCount else {
+            fatalError()
+        }
+    }}
 }

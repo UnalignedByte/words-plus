@@ -21,14 +21,10 @@ struct WordEdit: View {
 
     var body: some View {
         Form {
-            Section(header: Text("Word")) {
-                TextField("Word", text: $word.word)
-            }
-            Section(header: Text("Pinyin")) {
-                TextField("Pinyin", text: $word.pinyin)
-            }
-            Section(header: Text("Translation")) {
-                TextField("Translation", text: $word.translation)
+            ForEach(0..<word.language.valuesCount) { i in
+                Section(header: Text(self.word.language.titles[i])) {
+                    TextField(self.word.language.titles[i], text: self.$word.values[i])
+                }
             }
             Button("Save") {
                 self.isPresented = false

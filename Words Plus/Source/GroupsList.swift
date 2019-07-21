@@ -18,6 +18,8 @@ struct GroupsList: View {
                     GroupRow(group: self.wordsStore.groups[i])
                 }
             }.navigationBarTitle(Text("Word Groups"))
+        }.onAppear {
+            self.wordsStore.load()
         }
     }
 }

@@ -10,16 +10,16 @@ import SwiftUI
 
 struct WordsList: View {
     @Binding var group: Group
-    @State private var displayOption: DisplayOption = .everything
-    @State private var selectedWordIndex: Int = 0
-    @State private var shouldShowEdit: Bool = false
+    @State private var displayOption = 0
+    @State private var selectedWordIndex = 0
+    @State private var shouldShowEdit = false
 
     var body: some View {
         return NavigationView {
             List {
                 SegmentedControl(selection: $displayOption) {
-                    ForEach(DisplayOption.allCases, id: \.self) { option in
-                        Text(option.name).tag(option)
+                    ForEach(0...group.language.valuesCount) { i in
+                        Text(self.group.language.titles[i]).tag(i)
                     }
                 }
                 ForEach(0..<group.words.count) { i in

@@ -8,47 +8,73 @@
 
 import SwiftUI
 
-enum DisplayOption: CaseIterable, Equatable {
-    case everything
-    case word
-    case translation
-    case pinyin
+struct WordRow: View {
+    let word: Word
+    let displayOption: Int
 
-    var name: String {
-        switch self {
-        case .everything:
-            return "Everything"
-        case .word:
-            return "Word"
-        case .translation:
-            return "Translation"
-        case .pinyin:
-            return "Pinyin"
+    var body: some View {
+        switch word.language.valuesCount {
+        case 3:
+            return AnyView(ThreeValuesView(displayOption: displayOption,
+                                           value1: word.values[0],
+                                           value2: word.values[1],
+                                           value3: word.values[2]))
+        default:
+            return AnyView(TwoValuesView(displayOption: displayOption,
+                                         value1: word.values[0],
+                                         value2: word.values[1]))
         }
     }
 }
 
-struct WordRow: View {
-    let word: Word
-    var displayOption: DisplayOption
+private struct TwoValuesView: View {
+    let displayOption: Int
+    let value1: String
+    let value2: String
 
     var body: some View {
-        return HStack {
+        HStack {
             Spacer()
-            if displayOption == DisplayOption.word || displayOption == DisplayOption.everything {
-                Text(self.word.word).font(.title)
+            if displayOption == 1 || displayOption == 0 {
+                Text(value1)
+                    .font(.title)
             }
-            if displayOption == .everything {
+            if displayOption == 0 {
+                Spacer()
+            }
+            if displayOption == 2 || displayOption == 0 {
+                Text(value2)
+                    .font(.title)
+            }
+            Spacer()
+        }.frame(height: 80)
+    }
+}
+
+private struct ThreeValuesView: View {
+    let displayOption: Int
+    let value1: String
+    let value2: String
+    let value3: String
+
+    var body: some View {
+        HStack {
+            Spacer()
+            if displayOption == 1 || displayOption == 0 {
+                Text(value1)
+                    .font(.title)
+            }
+            if displayOption == 0 {
                 Spacer()
             }
             VStack {
-                if displayOption == DisplayOption.pinyin || displayOption == DisplayOption.everything {
-                    Text(self.word.pinyin)
+                if displayOption == 2 || displayOption == 0 {
+                    Text(value2)
                         .padding(.top, 8)
                         .font(.title)
                 }
-                if displayOption == DisplayOption.translation || displayOption == DisplayOption.everything {
-                    Text(self.word.translation)
+                if displayOption == 3 || displayOption == 0 {
+                    Text(value3)
                         .padding(.bottom, 8)
                         .font(.title)
                 }

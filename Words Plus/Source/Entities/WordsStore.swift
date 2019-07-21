@@ -12,23 +12,21 @@ import Combine
 final class WordsStore: BindableObject {
     var willChange = PassthroughSubject<Void, Never>()
 
-    var groups = WordsStore.testGroups {
+    var groups = [Group]() {
         willSet {
             willChange.send(())
         }
     }
 
-    var words = WordsStore.testWords {
-        willSet {
-            willChange.send(())
-        }
+    func load() {
+        let testWordsGeneric = [Word(language: .general, values: ["Word 0", "Translation 0"]),
+                         Word(language: .general, values: ["Word 1", "Translation 1"]),
+                         Word(language: .general, values: ["Word 2", "Translation 2"])]
+        let testWordsChinese = [Word(language: .chinese, values: ["词语 0", "拼音 0", "Translation 0"]),
+                                Word(language: .chinese, values: ["词语 1", "拼音 1", "Translation 1"]),
+                                Word(language: .chinese, values: ["词语 2", "拼音 2", "Translation 2"])]
+        let testGroups = [Group(language: .general, name: "Group General", words: testWordsGeneric),
+                          Group(language: .chinese, name: "Group 中文", words: testWordsChinese)]
+        self.groups = testGroups
     }
-
-    private static let testWords = [Word(id: "0", word: "word 0", translation: "translation 0", pinyin: "pinyin 0"),
-                                    Word(id: "1", word: "word 1", translation: "translation 1", pinyin: "pinyin 1"),
-                                    Word(id: "2", word: "word 2", translation: "translation 2", pinyin: "pinyin 2")]
-
-    private static let testGroups = [Group(name: "Group 0", words: testWords),
-                                     Group(name: "Group 1", words: testWords),
-                                     Group(name: "Group 2", words: testWords)]
 }

@@ -8,7 +8,15 @@
 
 import Foundation
 
-struct Group: Hashable {
+struct Group {
+    let language: Language
     var name: String
-    var words: [Word]
+    var words: [Word] { didSet {
+        let containsWrongWords = words.filter { word in
+            word.language != language
+        }.count > 0
+        guard !containsWrongWords else {
+            fatalError()
+        }
+    } }
 }
