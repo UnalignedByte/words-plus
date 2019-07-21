@@ -38,6 +38,7 @@ private struct TwoValuesView: View {
             if displayOption == 1 || displayOption == 0 {
                 Text(value1)
                     .font(.title)
+                    .minimumScaleFactor(0.5)
             }
             if displayOption == 0 {
                 Spacer()
@@ -45,6 +46,7 @@ private struct TwoValuesView: View {
             if displayOption == 2 || displayOption == 0 {
                 Text(value2)
                     .font(.title)
+                    .minimumScaleFactor(0.5)
             }
             Spacer()
         }.frame(height: 80)
@@ -63,6 +65,7 @@ private struct ThreeValuesView: View {
             if displayOption == 1 || displayOption == 0 {
                 Text(value1)
                     .font(.title)
+                    .minimumScaleFactor(0.5)
             }
             if displayOption == 0 {
                 Spacer()
@@ -72,11 +75,13 @@ private struct ThreeValuesView: View {
                     Text(value2)
                         .padding(.top, 8)
                         .font(.title)
+                        .minimumScaleFactor(0.5)
                 }
                 if displayOption == 3 || displayOption == 0 {
                     Text(value3)
                         .padding(.bottom, 8)
                         .font(.title)
+                        .minimumScaleFactor(0.5)
                 }
             }
             Spacer()
