@@ -24,10 +24,24 @@ struct WordsList: View {
                 }
                 ForEach(0..<group.words.count) { i in
                     WordRow(word: self.group.words[i], displayOption: self.displayOption)
-                    .longPressAction({
+                        /*.tapAction {
+                            self.displayOption = 0
+                    }*/
+                    /*.longPressAction({
                         self.selectedWordIndex = i
                         self.shouldShowEdit = true
-                    })
+                    })*/
+                        /*.gesture(LongPressGesture(minimumDuration: 1.0, maximumDistance: 0.0).onChanged({ b in
+                            print("XX Long press \(b)")
+                        }).onEnded({ b in
+                            print("XX Long Press Ended \(b)")
+                        }))*/
+                        /*.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                            .onChanged({ _ in
+                                print("began drag")
+                        }).onEnded({ _ in
+                            print("ended drag")
+                        }))*/
                 }
                 /*.onDelete { indexSet in
                     if let index = indexSet.first {
