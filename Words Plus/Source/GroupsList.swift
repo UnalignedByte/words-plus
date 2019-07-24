@@ -9,17 +9,13 @@
 import SwiftUI
 
 struct GroupsList: View {
-    @EnvironmentObject var wordsStore: WordsStore
+    @Binding var groups: [Group]
 
     var body: some View {
-        NavigationView {
-            List(0..<wordsStore.groups.count) { i in
-                NavigationLink(destination: WordsList(group: self.$wordsStore.groups[i])) {
-                    GroupRow(group: self.wordsStore.groups[i])
-                }
-            }.navigationBarTitle(Text("Word Groups"))
-        }.onAppear {
-            self.wordsStore.load()
-        }
+        List(0..<groups.count) { i in
+            NavigationLink(destination: WordsList(group: self.$groups[i])) {
+                GroupRow(group: self.groups[i])
+            }
+        }.navigationBarTitle(Text("Word Groups"))
     }
 }
