@@ -21,26 +21,13 @@ struct WordsList: View {
                     Text(self.group.language.titles[i]).tag(i)
                 }
             }
-            ForEach(0..<group.words.count) { i in
-                WordRow(word: self.group.words[i], displayOption: self.displayOption)
-                    /*.tapAction {
-                        self.displayOption = 0
-                }*/
-                /*.longPressAction({
+            ForEach(0..<group.words.count) { i -> WordRow in
+                let wordRow =  WordRow(word: self.group.words[i], displayOption: self.displayOption)
+                _ = wordRow.longPressSubject.sink { _ in
                     self.selectedWordIndex = i
                     self.shouldShowEdit = true
-                })*/
-                    /*.gesture(LongPressGesture(minimumDuration: 1.0, maximumDistance: 0.0).onChanged({ b in
-                        print("XX Long press \(b)")
-                    }).onEnded({ b in
-                        print("XX Long Press Ended \(b)")
-                    }))*/
-                    /*.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
-                        .onChanged({ _ in
-                            print("began drag")
-                    }).onEnded({ _ in
-                        print("ended drag")
-                    }))*/
+                }
+                return wordRow
             }
             /*.onDelete { indexSet in
                 if let index = indexSet.first {

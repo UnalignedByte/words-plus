@@ -7,10 +7,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct WordRow: View {
     let word: Word
     let displayOption: Int
+    let longPressSubject = PassthroughSubject<Void, Never>()
     @State private var shouldShowAll = false
 
     var body: some View {
@@ -20,7 +22,10 @@ struct WordRow: View {
                 self.shouldShowAll = true
             }.onEnded { _ in
                 self.shouldShowAll = false
-            })
+        }.simultaneously(with: LongPressGesture(minimumDuration: 1.0).onEnded { _ in
+            self.shouldShowAll = false
+            self.longPressSubject.send()
+        }))
     }
 
     private func valuesView(forWord word: Word) -> some View {
