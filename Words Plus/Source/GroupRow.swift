@@ -7,8 +7,23 @@
 //
 
 import SwiftUI
+import Combine
 
 struct GroupRow: View {
+    let group: Group
+    let longPressSubject = PassthroughSubject<Void, Never>()
+
+    var body: some View {
+        GroupView(group: group)
+        .gesture(LongPressGesture(minimumDuration: 1.0)
+            .onEnded { _ in
+                self.longPressSubject.send()
+            }
+        )
+    }
+}
+
+private struct GroupView: View {
     let group: Group
 
     var body: some View {

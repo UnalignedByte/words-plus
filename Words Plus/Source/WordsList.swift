@@ -11,7 +11,7 @@ import SwiftUI
 struct WordsList: View {
     @Binding var group: Group
     @State private var displayOption = 0
-    @State private var selectedWordIndex = 0
+    @State private var selectedIndex = 0
     @State private var shouldShowEdit = false
 
     var body: some View {
@@ -24,7 +24,7 @@ struct WordsList: View {
             ForEach(0..<group.words.count) { i -> WordRow in
                 let wordRow =  WordRow(word: self.group.words[i], displayOption: self.displayOption)
                 _ = wordRow.longPressSubject.sink { _ in
-                    self.selectedWordIndex = i
+                    self.selectedIndex = i
                     self.shouldShowEdit = true
                 }
                 return wordRow
@@ -41,7 +41,7 @@ struct WordsList: View {
             }*/
         }.navigationBarTitle(Text(group.name))
         .sheet(isPresented: $shouldShowEdit) {
-            WordEdit(word: self.$group.words[self.selectedWordIndex], isPresented: self.$shouldShowEdit)
+            WordEdit(word: self.$group.words[self.selectedIndex], isPresented: self.$shouldShowEdit)
         }
     }
 }

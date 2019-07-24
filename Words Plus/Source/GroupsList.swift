@@ -10,12 +10,22 @@ import SwiftUI
 
 struct GroupsList: View {
     @Binding var groups: [Group]
+    @State private var selectedIndex = 0
+    @State private var shouldShowEdit = false
 
     var body: some View {
-        List(0..<groups.count) { i in
+        List(0..<groups.count) { i -> NavigationLink<GroupRow> in
             NavigationLink(destination: WordsList(group: self.$groups[i])) {
-                GroupRow(group: self.groups[i])
+                let groupRow = GroupRow(group: self.groups[i])
+                _ = groupRow.longPressSubject.sink { _ in
+                    self.selectedIndex = i
+                    self.shouldShowEdit = true
+                }
+                return groupRow
             }
         }.navigationBarTitle(Text("Word Groups"))
+        .sheet(isPresented: $shouldShowEdit) {
+            GroupEdit(group: self.$groups[self.selectedIndex], isPresented: self.$shouldShowEdit)
+        }
     }
 }

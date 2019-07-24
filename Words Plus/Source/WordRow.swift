@@ -17,15 +17,19 @@ struct WordRow: View {
 
     var body: some View {
         let valuesView = self.valuesView(forWord: word)
-        return valuesView.gesture(DragGesture(minimumDistance: 0.0)
-            .onChanged { _ in
-                self.shouldShowAll = true
-            }.onEnded { _ in
-                self.shouldShowAll = false
-        }.simultaneously(with: LongPressGesture(minimumDuration: 1.0).onEnded { _ in
-            self.shouldShowAll = false
-            self.longPressSubject.send()
-        }))
+        return valuesView
+            .gesture(DragGesture(minimumDistance: 0.0)
+                .onChanged { _ in
+                    self.shouldShowAll = true
+                }.onEnded { _ in
+                    self.shouldShowAll = false
+                }.simultaneously(with: LongPressGesture(minimumDuration: 1.0)
+                    .onEnded { _ in
+                        self.shouldShowAll = false
+                        self.longPressSubject.send()
+                    }
+                )
+            )
     }
 
     private func valuesView(forWord word: Word) -> some View {
