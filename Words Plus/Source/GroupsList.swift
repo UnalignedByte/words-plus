@@ -17,7 +17,7 @@ struct GroupsList: View {
         List(0..<groups.count) { i -> NavigationLink<GroupRow> in
             NavigationLink(destination: WordsList(group: self.$groups[i])) {
                 let groupRow = GroupRow(group: self.groups[i])
-                _ = groupRow.longPressSubject.sink { _ in
+                _ = groupRow.contextAction.sink { _ in
                     self.selectedIndex = i
                     self.shouldShowEdit = true
                 }

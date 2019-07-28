@@ -11,7 +11,10 @@ import Combine
 
 struct GroupRow: View {
     let group: Group
-    let longPressSubject = PassthroughSubject<Void, Never>()
+    var contextAction: AnyPublisher<Void, Never> {
+        return longPressSubject.eraseToAnyPublisher()
+    }
+    private let longPressSubject = PassthroughSubject<Void, Never>()
 
     var body: some View {
         GroupView(group: group)
