@@ -54,6 +54,7 @@ struct WordsList: View {
                 }.frame(width: 40.0, height: 40.0)
                 .background(Color.accentColor)
                 .cornerRadius(20.0)
+                .shadow(radius: 5.0)
             }
         }.navigationBarTitle(Text(group.name))
         .sheet(isPresented: $shouldShowEdit) {

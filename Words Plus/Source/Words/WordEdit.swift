@@ -22,8 +22,8 @@ struct WordEdit: View {
     var body: some View {
         Form {
             ForEach(0..<word.language.valuesCount) { i in
-                Section(header: Text(self.word.language.titles[i])) {
-                    TextField(self.word.language.titles[i], text: self.$word.values[i])
+                Section(header: Text(self.word.language.titles[i+1])) {
+                    TextField(self.word.language.titles[i+1], text: self.$word.values[i])
                 }
             }
             Button("Save") {
