@@ -24,9 +24,10 @@ struct WordsList: View {
                 }.pickerStyle(SegmentedPickerStyle())
                 ForEach(0..<group.words.count) { i -> WordRow in
                     let wordRow =  WordRow(word: self.group.words[i], displayOption: self.displayOption)
-                    _ = wordRow.longPressSubject.sink { _ in
+                    _ = wordRow.contextAction.sink { _ in
                         self.selectedIndex = i
                         self.shouldShowEdit = true
+                        print("showing edit")
                     }
                     return wordRow
                 }
@@ -57,8 +58,8 @@ struct WordsList: View {
                 .shadow(radius: 5.0)
             }
         }.navigationBarTitle(Text(group.name))
-        /*.sheet(isPresented: $shouldShowEdit) {
+        .sheet(isPresented: $shouldShowEdit) {
             WordEdit(word: self.$group.words[self.selectedIndex], isPresented: self.$shouldShowEdit)
-        }*/
+        }
     }
 }

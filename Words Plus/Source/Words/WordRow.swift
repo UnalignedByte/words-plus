@@ -12,7 +12,10 @@ import Combine
 struct WordRow: View {
     let word: Word
     let displayOption: Int
-    let longPressSubject = PassthroughSubject<Void, Never>()
+    var contextAction: AnyPublisher<Void, Never> {
+        longPressSubject.eraseToAnyPublisher()
+    }
+    private let longPressSubject = PassthroughSubject<Void, Never>()
     @State private var shouldShowAll = false
 
     var body: some View {
@@ -27,6 +30,7 @@ struct WordRow: View {
                     .onEnded { _ in
                         self.shouldShowAll = false
                         self.longPressSubject.send()
+                        print("sending")
                     }
                 )
             )
