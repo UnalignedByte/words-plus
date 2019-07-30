@@ -112,9 +112,7 @@
 				B5E8837522AAF16D00237C6C /* AppDelegate.swift */,
 				B5E8837722AAF16D00237C6C /* SceneDelegate.swift */,
 				B5D6C5E422E8530E009C16FE /* MainView.swift */,
-				B50AFE5022AC20E500662185 /* GroupsList.swift */,
-				B50AFE5222AC22FC00662185 /* GroupRow.swift */,
-				B5D6C5E622E86518009C16FE /* GroupEdit.swift */,
+				B5FA80B322F03D6800928BA6 /* Groups */,
 				B54806E822EE2B8900C67063 /* Words */,
 			);
 			path = Source;
@@ -135,6 +133,16 @@
 				B5E8838322AAF16E00237C6C /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5FA80B322F03D6800928BA6 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				B50AFE5022AC20E500662185 /* GroupsList.swift */,
+				B50AFE5222AC22FC00662185 /* GroupRow.swift */,
+				B5D6C5E622E86518009C16FE /* GroupEdit.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

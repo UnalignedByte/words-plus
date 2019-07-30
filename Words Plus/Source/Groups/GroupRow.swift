@@ -12,7 +12,7 @@ import Combine
 struct GroupRow: View {
     let group: Group
     var contextAction: AnyPublisher<Void, Never> {
-        return longPressSubject.eraseToAnyPublisher()
+        longPressSubject.eraseToAnyPublisher()
     }
     private let longPressSubject = PassthroughSubject<Void, Never>()
 
