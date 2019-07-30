@@ -17,11 +17,11 @@ struct WordsList: View {
     var body: some View {
         ZStack {
             List {
-                SegmentedControl(selection: $displayOption) {
+                Picker(selection: $displayOption, label: Text("Display Option")) {
                     ForEach(0..<(group.language.valuesCount+1)) { i in
                         Text(self.group.language.titles[i]).tag(i)
                     }
-                }
+                }.pickerStyle(SegmentedPickerStyle())
                 ForEach(0..<group.words.count) { i -> WordRow in
                     let wordRow =  WordRow(word: self.group.words[i], displayOption: self.displayOption)
                     _ = wordRow.longPressSubject.sink { _ in
@@ -57,8 +57,8 @@ struct WordsList: View {
                 .shadow(radius: 5.0)
             }
         }.navigationBarTitle(Text(group.name))
-        .sheet(isPresented: $shouldShowEdit) {
+        /*.sheet(isPresented: $shouldShowEdit) {
             WordEdit(word: self.$group.words[self.selectedIndex], isPresented: self.$shouldShowEdit)
-        }
+        }*/
     }
 }
