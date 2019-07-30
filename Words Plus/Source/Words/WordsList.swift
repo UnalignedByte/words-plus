@@ -18,7 +18,7 @@ struct WordsList: View {
         ZStack {
             List {
                 SegmentedControl(selection: $displayOption) {
-                    ForEach(0...group.language.valuesCount) { i in
+                    ForEach(0..<(group.language.valuesCount+1)) { i in
                         Text(self.group.language.titles[i]).tag(i)
                     }
                 }

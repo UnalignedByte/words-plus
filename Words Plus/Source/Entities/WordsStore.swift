@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-final class WordsStore: BindableObject {
+final class WordsStore: ObservableObject {
     var willChange = PassthroughSubject<Void, Never>()
 
     var groups = [Group]() {

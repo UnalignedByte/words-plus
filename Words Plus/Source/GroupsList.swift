@@ -14,8 +14,8 @@ struct GroupsList: View {
     @State private var shouldShowEdit = false
 
     var body: some View {
-        List(0..<groups.count) { i -> NavigationLink<GroupRow> in
-            NavigationLink(destination: WordsList(group: self.$groups[i])) {
+        List(0..<groups.count) { i in
+            NavigationLink(destination: WordsList(group: self.$groups[i])) { () -> GroupRow in
                 let groupRow = GroupRow(group: self.groups[i])
                 _ = groupRow.contextAction.sink { _ in
                     self.selectedIndex = i
